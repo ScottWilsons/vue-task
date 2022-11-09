@@ -28,6 +28,7 @@ export default {
     let totalValue = ref(0);
     const addValue = (numAdded) => {
       totalValue.value = totalValue.value + numAdded;
+      totalValue.value = Math.round(totalValue.value * 10) / 10;
     };
     return { totalValue, addValue };
   },
@@ -72,14 +73,14 @@ export default {
         },
         {
           name: "KitKat",
-          calories: 518.7,
+          calories: 518.8,
         },
       ],
     };
   },
   mounted() {
     this.desserts.map((item) => {
-      this.addValue(Math.floor(item.calories));
+      this.addValue(item.calories);
       console.log(this.totalValue);
     });
   },
